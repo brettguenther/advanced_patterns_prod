@@ -1,4 +1,3 @@
-#use case 1 - dynamic dates
 explore: orders {
   label: "Orders: Dynamic Dates with Parameters"
   join: order_items {
@@ -6,6 +5,8 @@ explore: orders {
     relationship: one_to_many
   }
 }
+
+
 view: orders {
   sql_table_name: demo_db.orders ;;
 
@@ -36,13 +37,13 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
-parameter: date_granularity {
-  type: string
-  allowed_value: { value: "Day" }
-  allowed_value: { value: "Month" }
-  allowed_value: { value: "Quarter" }
-  allowed_value: { value: "Year" }
-}
+  parameter: date_granularity {
+    type: string
+    allowed_value: { value: "Day" }
+    allowed_value: { value: "Month" }
+    allowed_value: { value: "Quarter" }
+    allowed_value: { value: "Year" }
+  }
 
   dimension: date {
     label_from_parameter: date_granularity
@@ -81,6 +82,7 @@ parameter: date_granularity {
     fields: [id, created_time, user_id, status]
   }
 }
+
 view: order_items {
   measure: count {
     type: count
@@ -161,10 +163,6 @@ view: order_items {
   set: detail {
     fields: [id, order_id, sale_price, inventory_item_id, returned_at_time]
   }
-}
-
-explore: orders_brand_rank {
-  label: "Orders: Parameter for Other Bucket"
 }
 
 view: orders_brand_rank {

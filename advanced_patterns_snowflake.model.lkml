@@ -1,7 +1,7 @@
 connection: "snowflake_looker"
 
-include: "snowflake.*view.lkml"         # include all views in this project
-include: "*.dashboard.lookml"  # include all dashboards in this project
+include: "snowflake*.view.lkml"         # include all views in this project
+# include: "*.dashboard.lookml"  # include all dashboards in this project
 
 explore: tweets_agg {}
 

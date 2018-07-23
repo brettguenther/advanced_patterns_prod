@@ -14,6 +14,15 @@ include: "mapping_logic_bug.view.lkml"
 # #   }
 # }
 
+#use case 1 - dynamic dates
+
+explore: orders_brand_rank {
+  label: "Orders: Parameter for Other Bucket"
+}
+
+explore: parameter_to_variable {}
+
+
 ## Orders view
 
 explore: orders_e {

@@ -1,4 +1,3 @@
-explore: parameter_to_variable {}
 view: parameter_to_variable {
   # sql_table_name: {% if parameter_to_variable.myparam_value._sql == 1 %} ifeval {% else %} elseeval {% endif %};;
   # sql_table_name: {% myparam_value._sql %} ;;

@@ -11,7 +11,7 @@ view: orders_dynamic_table {
 
 view: orders_daily {
   derived_table: {
-    persist_for: "24 hours"
+    # persist_for: "24 hours"
     sql: SELECT DATE(orders.created_at) as created_at,
          orders.user_id,orders.status,
          (COALESCE(SUM(order_items.sale_price ), 0)) as sale_price
@@ -23,7 +23,7 @@ view: orders_daily {
 
 view: orders_highest_grain {
   derived_table: {
-    persist_for: "24 hours"
+    # persist_for: "24 hours"
     sql:  SELECT orders.created_at,
           orders.user_id,orders.id,
           orders.status,
