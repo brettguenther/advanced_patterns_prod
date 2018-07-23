@@ -22,7 +22,7 @@ view: dynamic_tweets {
 
 view: tweets_daily {
   derived_table: {
-    sql: select tweets. hll_accumulate(to_number(tweets.raw:user:id)) from PUBLIC.TWEETS as tweets ;;
+    sql: select tweets.hll_accumulate(to_number(tweets.raw:user:id)) from SNOW_TWITTER.PUBLIC.TWEETS as tweets ;;
     persist_for: "24 hours"
   }
 }
@@ -62,7 +62,7 @@ view: tweet_cluster_by {
         COUNT(DISTINCT (to_number(tweets.raw:user:id)) ) AS number_of_users,
         COUNT(*) AS record_count
 
-      FROM PUBLIC.TWEETS  AS tweets
+      FROM SNOW_TWITTER.PUBLIC.TWEETS  AS tweets
       GROUP BY 1
       order by 1 desc
       CLUSTER BY (user_id);;
@@ -75,7 +75,7 @@ view: tweet_cluster_by {
 
 
   view: tweets_base {
-    sql_table_name: PUBLIC.TWEETS ;;
+    sql_table_name: SNOW_TWITTER.PUBLIC.TWEETS ;;
     dimension: contributors {
       type: string
       sql: ${TABLE}.raw:contributors ;;
@@ -347,7 +347,7 @@ view: tweet_cluster_by {
   }
 
 view: tweets {
-  sql_table_name: PUBLIC.TWEETS ;;
+  sql_table_name: SNOW_TWITTER.PUBLIC.TWEETS ;;
   dimension: contributors {
     type: string
     sql: ${TABLE}.raw:contributors ;;
