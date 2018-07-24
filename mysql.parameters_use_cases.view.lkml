@@ -10,6 +10,20 @@ explore: orders {
 view: orders {
   sql_table_name: demo_db.orders ;;
 
+  dimension: filtered_link_to_look {
+    sql: 1=1 ;;
+    html: <a href="https://localhost:9999/looks/1?f[orders.created_date]={{_filters['orders.created_date']}}">
+    <img src="https://localhost:9999/images/3.0/header/looker_logo@2x-7d7d64ea.png"" />
+    </a> ;;
+  }
+    dimension: filtered_link_to_dashboard {
+    sql: 1=1 ;;
+    html: <a href="https://localhost:9999/dashboards/2?Date={{_filters['orders.created_date']}}">
+          <img src="https://localhost:9999/images/3.0/header/looker_logo@2x-7d7d64ea.png"" />
+          </a> ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -36,6 +50,7 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
   }
+
 
   parameter: date_granularity {
     type: string
