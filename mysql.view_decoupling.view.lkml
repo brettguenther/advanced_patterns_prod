@@ -5,7 +5,7 @@ explore: orders_only {
   }
   join: users_orders {
     sql:  ;;
-    relationship: many_to_one
+    relationship: one_to_one
   }
 }
 
